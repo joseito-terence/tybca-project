@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import "./navbar.css";
 
 function Navbar() {
@@ -6,13 +7,27 @@ function Navbar() {
     <section>
       <nav className="navbar">
         <div className="navbar__items">
-          <a href='#' className="navbar__item-active">Home</a>
-          <a href='#'>About Us</a>
-          <a href='#'>Products</a>
+          <NavItem link='/' text='Home' />
+          <NavItem link='/aboutus' text='About Us' />
+          <NavItem link='/products' text='Products' />
         </div>
       </nav>
     </section>
   );
 }
 
+
+function NavItem({ text, link }) {
+  return (
+    <NavLink
+      exact
+      activeClassName="navbar__item-active"
+      to={link}
+    >
+      {text}
+    </NavLink>
+  );
+}
+
 export default Navbar;
+

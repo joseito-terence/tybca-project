@@ -1,0 +1,5 @@
+.sidenav{
+  width: 300px;
+  min-height: calc(100vh - 120px);
+  background-color: #3e86c9;
+}

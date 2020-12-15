@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -8,9 +9,9 @@ function Footer() {
                 <div className="footer__sitemap" >
                     <h5>Sitemap</h5>
                     <ul>
-                        <li><a href='#'>Home</a></li>
-                        <li><a href='#'>About Us</a></li>
-                        <li><a href='#'>Products</a></li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/aboutus'>About Us</Link></li>
+                        <li><Link to='/products'>Products</Link></li>
                     </ul>
                 </div>
                 <div className="footer__contact-form">

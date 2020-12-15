@@ -18,8 +18,9 @@
   padding: 10px 0;
 }
 
-.header__container > .input-group{
+.header__container > form {
   width: 60%;
+  display: flex;
 }
 
 .header__actions{
