@@ -1,0 +1,21 @@
+#carouselItems.carousel {
+  padding: 5px 45px;
+}
+
+#carouselItems.carousel .carousel-indicators {
+  bottom: -20px;
+}
+
+#carouselItems .carousel-control-prev, 
+#carouselItems .carousel-control-next {
+  width: 40px;
+  margin: auto 0;
+  font-size: 3rem;
+}
+
+#carouselItems  .carousel-indicators li{
+  background-color: #666666;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}

@@ -1,0 +1,20 @@
+.items > .container > .row{
+  padding: 2px;
+}
+
+.items > .container  .col{
+  padding: 0 5px;
+}
+
+.items .col > .card{
+  height: calc((100vh - 156px) / 3);
+}
+
+.items .card-img{
+  height: 100%;
+  object-fit: cover;
+}
+
+.items .card-img-overlay{
+  top: auto;
+}

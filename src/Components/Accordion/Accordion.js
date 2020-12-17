@@ -1,13 +1,17 @@
-import React, { cloneElement } from "react";
+import React, { cloneElement, Children } from "react";
+import AccordionItem from './AccordionItem';
 
 function Accordion({ id, children }) {
   return (
     <div class="accordion" id={`accordian${id}`}>
-      {children.map(child => 
+      {Children.map(children, child => 
         cloneElement(child, { parentId: id })
       )}
     </div>
   );
 }
+
+Accordion.Item = AccordionItem;
+
 
 export default Accordion;

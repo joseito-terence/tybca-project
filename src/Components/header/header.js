@@ -1,6 +1,6 @@
 import React from "react";
-import "./header.css";
-import Navbar from "./navbar";
+import "./Header.css";
+import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
 
 function Header() {
