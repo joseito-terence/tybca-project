@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+# BCA Final Year Project.
 
-BCA Final Year Project. 
 Group Members: - 
   R/BCA-18-109 - Charlton Dias
   R/BCA-18-201 - Aaron C. Fernandes
@@ -18,7 +17,7 @@ In the project directory, run:
 
 Initializes the package.json file.
 
-## `npm install`
+### `npm install`
 
 Installs all the dependancies.
 
