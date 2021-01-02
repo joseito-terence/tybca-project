@@ -32,7 +32,9 @@ function Header() {
         <div className="header__actions">
           <button className="btn btn-secondary">Login</button>
           <span className="header__actionsCart">
-            <i className="fas fa-shopping-cart">{"  "}</i>
+            <Link to='/cart'>
+              <i className="fas fa-shopping-cart text-white">{" 3"}</i>
+            </Link>
           </span>
         </div>
       </div>

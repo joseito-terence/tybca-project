@@ -1,0 +1,12 @@
+.shoppingCart h3{  
+  /* Style for the titles of components items and summary */
+  padding-bottom: 5px;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px){
+  .shoppingCart .row{
+    flex-direction: column-reverse;
+  }
+}
