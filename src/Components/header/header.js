@@ -14,8 +14,10 @@ function Header() {
             alt="logo"
           />
         </Link>
+        
+        
 
-        <form>
+        <form className="header__search">
           <input
             type="text"
             className="form-control"
@@ -37,6 +39,7 @@ function Header() {
             </Link>
           </span>
         </div>
+        
       </div>
       <Navbar />
     </header>
