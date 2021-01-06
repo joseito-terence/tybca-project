@@ -70,7 +70,7 @@ export default Items;
 function Item({ productId, productName, imgSrc }) {
   return (
     <Link 
-      to={`/products/${productId}`} 
+      to={`/product/${productId}`} 
       className="card bg-dark text-white"
     >
       <img class="card-img" src={imgSrc} alt={productName} />

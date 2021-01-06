@@ -1,3 +1,7 @@
 .btn, .form-control {
   border-radius: 10px;
 }
+.btn.focus, .btn:focus {
+  outline: 0;
+  box-shadow: none;
+}

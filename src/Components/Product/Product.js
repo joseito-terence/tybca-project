@@ -47,7 +47,7 @@ const Product = () => {
       <div className='product__summary'>
         <h2 id='product__name'>Product Name</h2>
         <div className='product__credebility'>
-          <p className='product__value'>$10,000</p>
+          <p className='product__value'>₹10,000.00</p>
           <div className='product__ratings'>
             <p className='product__rating-stars'>Ratings</p>
             <i class='fas fa-star'></i>
@@ -61,23 +61,23 @@ const Product = () => {
           Write a Review
         </a>
         <div className='product__nav'>
-          <Accordion id='Categories'>
-            <Accordion.Item id='CategoryA' headerText='DETAILS'>
-              sub-categories for category A go here...
+          <Accordion id='productNav'>
+            <Accordion.Item id='details' headerText='DETAILS'>
+              Details of the product go here...
             </Accordion.Item>
-            <Accordion.Item id='CategoryB' headerText='DESCRIPTION'>
-              sub-categories for category B go here...
+            <Accordion.Item id='description' headerText='DESCRIPTION'>
+              Description of the product goes here...
             </Accordion.Item>
-            <Accordion.Item id='CategoryC' headerText='REVIEWS'>
-              sub-categories for category C go here...
+            <Accordion.Item id='reviews' headerText='REVIEWS'>
+              Reviews...............
             </Accordion.Item>
           </Accordion>
         </div>
-        <button className='product__cart'>
+        <button className='product__cart btn'>
           ADD TO CART
         </button>
-        <a className='product__wishlist'>
-          Add To Wishlist
+        <a className='product__wishlist btn btn-link btn-block'>
+          ADD TO WISHLIST
         </a>
       </div>
     </div>

@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import Products from './Components/Products';
 import Cart from './Components/Cart/';
+import Product from './Components/Product/';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path='/product/:id' component={Product} />
           <Route path='/cart' component={Cart} />
           <Route path='/products' component={Products} />
           <Route path='/' component={Home} />
