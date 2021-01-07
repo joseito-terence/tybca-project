@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #3e86c9;
+  padding: 0;
+  overflow: hidden;
+  height: 40px;
+}
+
+.navbar__items > a {
+  text-decoration: none;
+  color: white;
+  padding: 12px;
+}
+
+.navbar__items > a:hover, .navbar__item-active {
+  background-color: #00274b;
+}
