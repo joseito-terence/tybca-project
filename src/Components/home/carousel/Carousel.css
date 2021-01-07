@@ -1,4 +1,0 @@
-#carouselHome .carousel-item > img {
-  height: calc(100vh - 120px);
-  object-fit: cover;
-}
