@@ -73,7 +73,7 @@ const Product = () => {
             </Accordion.Item>
           </Accordion>
         </div>
-        <button className='product__cart btn'>
+        <button className='product__cart btn btn-primary'>
           ADD TO CART
         </button>
         <a className='product__wishlist btn btn-link btn-block'>
