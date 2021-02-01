@@ -1,7 +1,10 @@
 import React from "react";
 import "./Header.css";
-import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
+
+import Navbar from "./Navbar";
+import Modal from '../Modal';
+import SignIn from "../SignIn";
 
 function Header() {
   return (
@@ -32,7 +35,9 @@ function Header() {
         </form>
 
         <div className="header__actions">
-          <button className="btn btn-secondary">Login</button>
+          <Modal id='loginModal' className='btn btn-secondary' buttonText='Login'>
+            <SignIn />
+          </Modal>
           <span className="header__actionsCart">
             <Link to='/cart'>
               <i className="fas fa-shopping-cart text-white">{" 3"}</i>

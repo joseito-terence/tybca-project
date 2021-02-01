@@ -1,5 +1,6 @@
 import React from 'react';
 import Accordion from '../../Accordion/';
+import Wishlist from '../../Wishlist';
 
 import './SideNav.css';
 
@@ -17,6 +18,11 @@ function SideNav() {
           sub-categories for category C go here...
         </Accordion.Item>
       </Accordion>
+
+      <div className='sidenav__wishlist'>
+        <Wishlist miniView />
+      </div>
+
     </div>
   )
 }

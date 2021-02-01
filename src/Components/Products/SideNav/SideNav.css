@@ -1,6 +1,16 @@
-.sidenav{
+.sidenav {
   min-width: 200px;
   max-width: 200px;
   min-height: calc(100vh - 120px);
   background-color: #3e86c9;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidenav__wishlist {
+  height: 30vh;
+  overflow-y: scroll;
+  border-top: .5px solid #0000002e;
 }

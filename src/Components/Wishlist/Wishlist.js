@@ -1,46 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
+import Link from "react-router-dom/Link";
 import "./Wishlist.css";
 import WishlistProduct from "./WishlistProduct/WishlistProduct";
 
 
-function Wishlist() {
+function Wishlist({ miniView }) {
+  const [products, setProducts] = useState([
+    {
+      id: "testkdaofjiq3oaireo",
+      title: "Red hoodie",
+      price: 1000,
+      category: "Hoodies",
+      img: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg",
+    },
+    {
+      id: "testkdaoiq3oaireo",
+      title: "Red hoodie",
+      price: 1000,
+      category: "Hoodies",
+      img: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg",
+    },
+    {
+      id: "testkdaofjioaireo",
+      title: "Red hoodie",
+      price: 1000,
+      category: "Hoodies",
+      img: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg",
+    },
+  ]);
+
   return (
-    <div className="wishlist container mt-3">
+    <div className="wishlist container mb-3">
       <div className="row">
-        <div className="col-md-4 mb-5">
-          <WishlistProduct
-            id={"testkdaofjiq3oaireo"}
-            name={"Red hoodie"}
-            category={"Hoodies"}
-            img={
-              "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
-            }
-          />
+        <div className="col">
+          <div class="text-center py-3">
+            {!miniView ? (
+              <h3 class="mb-0">Wishlist</h3> 
+            ) : (
+              <Link to='/wishlist'>
+                  <h5 className='text-left text-light btn-link'>My Wishlist</h5>
+              </Link>
+            )}
+          </div>
         </div>
-        <div className="col-md-4 mb-5">
+      </div>
+      <div className="row">
+        {products.map(product => (
           <WishlistProduct
-            id={"testkdaofjiq3oaireo"}
-            name={"Red hoodie"}
-            category={"Hoodies"}
-            img={
-              "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
-            }
+            id={product.id}
+            title={product.title}
+            category={product.category}
+            price={product.price}
+            img={product.img}
+            miniView={miniView}
           />
-        </div>
-        <div className="col-md-4 mb-5">
-          <WishlistProduct
-            id={"testkdaofjiq3oaireo"}
-            name={"Red hoodie"}
-            category={"Hoodies"}
-            img={
-              "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
-            }
-          />
-        </div>
+        ))}
       </div>
     </div>
   );
 }
 export default Wishlist;
-
 

@@ -32,3 +32,21 @@
   outline: 0;
   box-shadow: none;
 }
+
+/* CUSTOM STYLE SHEET FOR THE SCROLLBAR */
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:silver; 
+  border-radius: 10px;
+}
