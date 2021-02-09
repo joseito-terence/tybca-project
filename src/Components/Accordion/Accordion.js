@@ -3,7 +3,7 @@ import AccordionItem from './AccordionItem';
 
 function Accordion({ id, children }) {
   return (
-    <div class="accordion" id={`accordian${id}`}>
+    <div className="accordion" id={`accordian${id}`}>
       {Children.map(children, child => 
         cloneElement(child, { parentId: id })
       )}

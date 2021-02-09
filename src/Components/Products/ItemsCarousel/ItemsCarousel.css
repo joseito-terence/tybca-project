@@ -1,5 +1,6 @@
 #carouselItems.carousel {
   padding: 5px 45px;
+  width: 100%;
 }
 
 #carouselItems.carousel .carousel-indicators {

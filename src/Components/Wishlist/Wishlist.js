@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "react-router-dom/Link";
+import { Link } from 'react-router-dom';
 import "./Wishlist.css";
 import WishlistProduct from "./WishlistProduct/WishlistProduct";
 
@@ -33,9 +33,9 @@ function Wishlist({ miniView }) {
     <div className="wishlist container mb-3">
       <div className="row">
         <div className="col">
-          <div class="text-center py-3">
+          <div className="text-center py-3">
             {!miniView ? (
-              <h3 class="mb-0">Wishlist</h3> 
+              <h3 className="mb-0">Wishlist</h3> 
             ) : (
               <Link to='/wishlist'>
                   <h5 className='text-left text-light btn-link'>My Wishlist</h5>
@@ -47,6 +47,7 @@ function Wishlist({ miniView }) {
       <div className="row">
         {products.map(product => (
           <WishlistProduct
+            key={product.id}
             id={product.id}
             title={product.title}
             category={product.category}

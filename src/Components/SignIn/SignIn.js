@@ -34,7 +34,7 @@ function SignIn() {
             {error && 
               <div className="alert alert-danger alert-dismissible fade show m-3" role="alert">
                 {error}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -98,7 +98,7 @@ function SignIn() {
               src="//st3.depositphotos.com/3126965/13277/v/450/depositphotos_132775264-stock-illustration-woman-doing-shopping-online.jpg"
               alt="banner"
             />
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
           </div>

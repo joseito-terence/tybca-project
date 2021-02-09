@@ -26,8 +26,8 @@ function Footer() {
                 </div>
                 <div className="footer__details">
                     <img src="https://josephreisigl.files.wordpress.com/2015/08/amazonlogo.png" alt=""/>
-                    <i class="fas fa-phone-alt"> (+91) 10000000000</i>  <br />
-                    <i class="fas fa-envelope"> ourCompany@gmail.com</i>
+                    <i className="fas fa-phone-alt"> (+91) 10000000000</i>  <br />
+                    <i className="fas fa-envelope"> ourCompany@gmail.com</i>
                 </div>
             </footer>
             <div className="footer__copyright">

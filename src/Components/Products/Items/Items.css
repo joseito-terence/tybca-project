@@ -1,9 +1,9 @@
-.items > .container > .row{
+/* .items > .container > .row{
   padding: 2px;
-}
+} */
 
 .items > .container  .col{
-  padding: 0 5px;
+  padding: 2px;
 }
 
 .items .col > .card{

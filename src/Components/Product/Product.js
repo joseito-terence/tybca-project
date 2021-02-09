@@ -39,7 +39,7 @@ const Product = () => {
         <div className='product__images-sub'>
           {images.map((image, index) => {
             return (
-              <img src={image.src} alt='' onClick={() => viewProduct(index)} />
+              <img key={index} src={image.src} alt='' onClick={() => viewProduct(index)} />
             );
           })}
         </div>
@@ -50,11 +50,11 @@ const Product = () => {
           <p className='product__value'>₹10,000.00</p>
           <div className='product__ratings'>
             <p className='product__rating-stars'>Ratings</p>
-            <i class='fas fa-star'></i>
-            <i class='fas fa-star'></i>
-            <i class='fas fa-star'></i>
-            <i class='fas fa-star'></i>
-            <i class='fas fa-star'></i>
+            <i className='fas fa-star'></i>
+            <i className='fas fa-star'></i>
+            <i className='fas fa-star'></i>
+            <i className='fas fa-star'></i>
+            <i className='fas fa-star'></i>
           </div>
         </div>
         <a className='product__review' href='#'>
