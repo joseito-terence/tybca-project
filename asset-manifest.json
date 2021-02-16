@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/tybca-project/static/css/main.3afaa526.chunk.css",
-    "main.js": "/tybca-project/static/js/main.5eeefe8b.chunk.js",
-    "main.js.map": "/tybca-project/static/js/main.5eeefe8b.chunk.js.map",
+    "main.css": "/tybca-project/static/css/main.34ca50cc.chunk.css",
+    "main.js": "/tybca-project/static/js/main.8ea30145.chunk.js",
+    "main.js.map": "/tybca-project/static/js/main.8ea30145.chunk.js.map",
     "runtime-main.js": "/tybca-project/static/js/runtime-main.f0c6e9b9.js",
     "runtime-main.js.map": "/tybca-project/static/js/runtime-main.f0c6e9b9.js.map",
-    "static/js/2.4307c9ff.chunk.js": "/tybca-project/static/js/2.4307c9ff.chunk.js",
-    "static/js/2.4307c9ff.chunk.js.map": "/tybca-project/static/js/2.4307c9ff.chunk.js.map",
+    "static/js/2.c55a1156.chunk.js": "/tybca-project/static/js/2.c55a1156.chunk.js",
+    "static/js/2.c55a1156.chunk.js.map": "/tybca-project/static/js/2.c55a1156.chunk.js.map",
     "index.html": "/tybca-project/index.html",
-    "static/css/main.3afaa526.chunk.css.map": "/tybca-project/static/css/main.3afaa526.chunk.css.map",
-    "static/js/2.4307c9ff.chunk.js.LICENSE.txt": "/tybca-project/static/js/2.4307c9ff.chunk.js.LICENSE.txt"
+    "static/css/main.34ca50cc.chunk.css.map": "/tybca-project/static/css/main.34ca50cc.chunk.css.map",
+    "static/js/2.c55a1156.chunk.js.LICENSE.txt": "/tybca-project/static/js/2.c55a1156.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f0c6e9b9.js",
-    "static/js/2.4307c9ff.chunk.js",
-    "static/css/main.3afaa526.chunk.css",
-    "static/js/main.5eeefe8b.chunk.js"
+    "static/js/2.c55a1156.chunk.js",
+    "static/css/main.34ca50cc.chunk.css",
+    "static/js/main.8ea30145.chunk.js"
   ]
 }
