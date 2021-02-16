@@ -1,32 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Product.css';
 import Accordion from '../Accordion/Accordion';
+import db from '../../firebase';
+import { useParams } from 'react-router-dom';
 
 const Product = () => {
-  const images = [
-    {
-      src:
-        'https://images-na.ssl-images-amazon.com/images/I/61at7-x0VmL._UL1100_.jpg',
-    },
-    {
-      src:
-        'https://images-na.ssl-images-amazon.com/images/I/71VnfRIZWnL._UL1100_.jpg',
-    },
-    {
-      src:
-        'https://images-na.ssl-images-amazon.com/images/I/51DVfshuaTL._UL1100_.jpg',
-    },
-    {
-      src:
-        'https://images-na.ssl-images-amazon.com/images/I/51EUeTP2j2L._UL1100_.jpg',
-    },
-  ];
+  const { productId } = useParams();
+  const [product, setProduct] = useState({});
 
-  const [mainImage, setMainImage] = useState(images[0].src);
+  const [mainImage, setMainImage] = useState('');
 
   const viewProduct = (index) => {
-    setMainImage(images[index].src)
+    setMainImage(product.images[index])
   };
+
+  useEffect(() => {
+    db.doc(`products/${productId}`)
+      .get()
+      .then(doc => {
+        setProduct(doc.data());
+        setMainImage(doc.data().images[0]);
+      })
+      .catch(err => console.log(err.message));
+  }, []);
 
   return (
     <div className='product__container'>
@@ -34,20 +30,18 @@ const Product = () => {
         <img
           className='product__images-main'
           src={mainImage}
-          alt='Product Image'
+          alt={product?.title}
         />
         <div className='product__images-sub'>
-          {images.map((image, index) => {
-            return (
-              <img key={index} src={image.src} alt='' onClick={() => viewProduct(index)} />
-            );
-          })}
+          {product.images?.map((image, index) => 
+            <img key={index} src={image} alt='' onClick={() => viewProduct(index)} />
+          )}
         </div>
       </div>
       <div className='product__summary'>
-        <h2 id='product__name'>Product Name</h2>
+        <h2 id='product__name'>{product?.title}</h2>
         <div className='product__credebility'>
-          <p className='product__value'>₹10,000.00</p>
+          <p className='product__value'>₹{product?.price}.00</p>
           <div className='product__ratings'>
             <p className='product__rating-stars'>Ratings</p>
             <i className='fas fa-star'></i>
@@ -66,7 +60,7 @@ const Product = () => {
               Details of the product go here...
             </Accordion.Item>
             <Accordion.Item id='description' headerText='DESCRIPTION'>
-              Description of the product goes here...
+              {product.description}
             </Accordion.Item>
             <Accordion.Item id='reviews' headerText='REVIEWS'>
               Reviews...............

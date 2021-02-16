@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ItemsCarousel.css';
 import Items from '../Items/';
+import db from '../../../firebase';
+
 
 function ItemsCarousel() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    db.collection('products')
+      .limit('24')
+      .get()
+      .then(snap => 
+        setProducts(snap.docs.map(doc => ({id: doc.id, ...doc.data()})))
+      )
+      .catch(err => console.log(err.message));
+  }, []);
+
+  // console.log(products);
+
   return (
     <div id="carouselItems" className="carousel slide" data-ride="carousel" data-interval='0'>
       <ol className="carousel-indicators">
@@ -12,13 +27,13 @@ function ItemsCarousel() {
       </ol>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <Items />
+          <Items products={products.slice(0,8)} />
         </div>
         <div className="carousel-item">
-          <Items />
+          <Items products={products.slice(8,16)} />
         </div>
         <div className="carousel-item">
-          <Items />
+          <Items products={products.slice(16,24)} />
         </div>
       </div>
       <a className="carousel-control-prev" href="#carouselItems" role="button" data-slide="prev">

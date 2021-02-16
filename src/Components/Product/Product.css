@@ -19,9 +19,10 @@
 }
 
 .product__images-main {
-  background-size: contain;
+  object-fit: contain;
   width: 45vh;
   height: auto;
+  min-height: 45vh;
 }
 
 .product__images-sub {
@@ -31,6 +32,7 @@
 }
 
 .product__images-sub img {
+  object-fit: contain;
   margin: 50px 15px 0px 15px;
   border: 1px solid #e0e0e0;
   height: 80px;
@@ -108,6 +110,7 @@
   }
   .product__images-main{
     width: 85vw;
+    height: 45vh;
   }
   .product__images-sub img {
     margin: 50px 8px 0px 8px;
