@@ -1,7 +1,7 @@
 import React from 'react';
 import './Summary.css';
 
-function Summary() {
+function Summary({ totalAmount }) {
   return (  
     <div className='summary w-100 mb-5'>
       <h3>ORDER SUMMARY</h3>
@@ -13,7 +13,7 @@ function Summary() {
 
       <div className="summary__paymentAmt">
         <div>
-          <span>Items: </span> <span>₹30,000.00</span>
+          <span>Items: </span> <span>₹{totalAmount}.00</span>
         </div>
         <div>
           <span>Estimated Shipping: </span> <span>FREE</span>
@@ -22,7 +22,7 @@ function Summary() {
 
       <div className="summary__orderTotal">
         <span>ORDER TOTAL: </span>
-        <span>₹30,000.00</span>
+        <span>₹{totalAmount}.00</span>
       </div>
 
       <button className="summary__checkoutBtn btn btn-primary mt-3 p-2 w-100">

@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link } from 'react-router-dom';
 
 import Navbar from "./Navbar";
 import Modal from '../Modal';
 import SignIn from "../SignIn";
+import db, { auth } from "../../firebase";
 
 function Header() {
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  const [user, setUser] = useState(null);
+  const email = auth.currentUser?.email;
+
+  useEffect(() => {
+    auth.onAuthStateChanged(authUser => {
+      setUser(authUser || null);
+    })
+  }, []);
+
+
+  useEffect(() => {
+    const unsubscribe = db.doc(`customers/${email}`).collection('cart')
+      .onSnapshot(snap => 
+        setCartItemsCount(snap.docs.length)
+      )
+    return () => {
+      unsubscribe();
+    }
+  }, [email]);
+
+
   return (
     <header className="header">
       <div className="header__container">
@@ -35,12 +58,19 @@ function Header() {
         </form>
 
         <div className="header__actions">
-          <Modal id='loginModal' className='btn btn-secondary' buttonText='Login'>
-            <SignIn />
-          </Modal>
+          {!user ?
+            <Modal id='loginModal' className='btn btn-secondary' buttonText='Login'>
+              <SignIn />
+            </Modal>
+            :
+            <button className="btn btn-secondary" onClick={() => auth.signOut() }>Logout</button>
+          }
+          
           <span className="header__actionsCart">
             <Link to='/cart'>
-              <i className="fas fa-shopping-cart text-white">{" 3"}</i>
+              <i className="fas fa-shopping-cart text-white">
+                {' '}{cartItemsCount || ''}
+              </i>
             </Link>
           </span>
         </div>

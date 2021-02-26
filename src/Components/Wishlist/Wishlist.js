@@ -1,33 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import db, { auth } from "../../firebase";
 import "./Wishlist.css";
 import WishlistProduct from "./WishlistProduct/WishlistProduct";
 
 
 function Wishlist({ miniView }) {
-  const [products, setProducts] = useState([
-    {
-      id: "testkdaofjiq3oaireo",
-      title: "Red hoodie",
-      price: 1000,
-      category: "Hoodies",
-      img: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg",
-    },
-    {
-      id: "testkdaoiq3oaireo",
-      title: "Red hoodie",
-      price: 1000,
-      category: "Hoodies",
-      img: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg",
-    },
-    {
-      id: "testkdaofjioaireo",
-      title: "Red hoodie",
-      price: 1000,
-      category: "Hoodies",
-      img: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg",
-    },
-  ]);
+  const [wishlist, setWishlist] = useState([]);     // holds id's of items in the wishlist.
+  const [itemInfo, setItemInfo] = useState([]);     // holds info. of the items in the wishlist.
+  const email = auth.currentUser?.email;
+
+  useEffect(() => {
+    const unsubscribe = db.doc(`customers/${email}`).collection('wishlist')
+      .onSnapshot(snap => 
+        setWishlist(snap.docs.map(doc => doc.data()))
+      );
+
+    return () => {
+      unsubscribe();
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if(wishlist.length !== 0){
+      const ids = wishlist.map(item => item.id);
+      
+      db.collection('products')
+        .where('__name__', 'in', ids)
+        .get()
+        .then(snap => setItemInfo(snap.docs.map(doc => ({ ...doc.data(), id: doc.id }))))
+        .catch(err => console.error(err));
+    }
+    else
+      setItemInfo([]);    // items in wishlist are zero, reset the array.
+  }, [wishlist]);
 
   return (
     <div className="wishlist container mb-3">
@@ -45,14 +51,14 @@ function Wishlist({ miniView }) {
         </div>
       </div>
       <div className="row">
-        {products.map(product => (
+        {itemInfo.map(product => (
           <WishlistProduct
             key={product.id}
             id={product.id}
             title={product.title}
             category={product.category}
             price={product.price}
-            img={product.img}
+            img={product.images[0]}
             miniView={miniView}
           />
         ))}

@@ -1,18 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css';
 import Accordion from '../Accordion/Accordion';
-import db from '../../firebase';
+import db, { auth } from '../../firebase';
 import { useParams } from 'react-router-dom';
 
-const Product = () => {
+const Product = (props) => {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
+  const email = auth.currentUser?.email;
 
   const [mainImage, setMainImage] = useState('');
 
   const viewProduct = (index) => {
     setMainImage(product.images[index])
   };
+
+  const requiredSignIn = () => {
+    /* addToCart and addToWishlist operations
+     requires user to be authenticated. */
+
+    document.querySelector('.header__actions > div > button').click(); // open login modal.
+  }
+
+  const addToCart = () => {                               // add to cart 
+    if(email){
+      console.log(email)
+      db.doc(`customers/${email}`)
+        .collection('cart')
+        .doc(productId)
+        .set({ qty: 1 })  
+        .then(() => props.history.push('/cart'));           // and then redirect to /cart.
+    }else{
+      requiredSignIn();
+    }
+  }
+
+  const addToWishList = () => {
+    if(email){
+      console.log(email)
+      db.doc(`customers/${email}`)
+        .collection('wishlist')
+        .doc(productId)
+        .set({ id: productId })
+        .then(() => console.log('Added to wishlist'))
+        .catch(err => console.log(err));
+    }else{
+      requiredSignIn();
+    }
+  }
 
   useEffect(() => {
     db.doc(`products/${productId}`)
@@ -51,9 +86,9 @@ const Product = () => {
             <i className='fas fa-star'></i>
           </div>
         </div>
-        <a className='product__review' href='#'>
+        <button className="product__review btn btn-link">
           Write a Review
-        </a>
+        </button>
         <div className='product__nav'>
           <Accordion id='productNav'>
             <Accordion.Item id='details' headerText='DETAILS'>
@@ -67,12 +102,12 @@ const Product = () => {
             </Accordion.Item>
           </Accordion>
         </div>
-        <button className='product__cart btn btn-primary'>
+        <button className='product__cart btn btn-primary' onClick={addToCart}>
           ADD TO CART
         </button>
-        <a className='product__wishlist btn btn-link btn-block'>
+        <button className='product__wishlist btn btn-link btn-block' onClick={addToWishList}>
           ADD TO WISHLIST
-        </a>
+        </button>
       </div>
     </div>
   );

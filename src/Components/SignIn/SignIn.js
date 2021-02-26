@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignIn.css";
-// import { auth } from '../../firebase';
+import db, { auth, provider } from '../../firebase';
 
 function SignIn() {
   const [state, setState] = useState({
@@ -14,16 +14,46 @@ function SignIn() {
     setState({ ...state, [target.id]: target.value });
   };
 
-  
-
   const signIn = (event) => {
     event.preventDefault();
 
-    console.log(state);
+    db.doc(`customers/${state.email}`)
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          setError('User not found. Check your credentials.')
+        } else {
+          // user exists. therefore, authenticate.
+          auth.signInWithEmailAndPassword(state.email, state.password)
+              .then(() => { 
+                console.log('SignIn Successful') 
+                document.querySelector('#loginModal .close').click();
+              })
+              .catch(error => setError(error?.message));
+        }
+      })   
+  }
+  
+  const signInWithGoogle = (event) => {
+    event.preventDefault();
 
-    // auth.signInWithEmailAndPassword(state.email, state.password)
-    //   .then(() => console.log('SignIn Successful'))
-    //   .catch(error => setError(error?.message));
+    auth.signInWithPopup(provider) // provider is google
+        .then(result => {
+          const { uid, email } = result.user;
+          db.doc(`customers/${email}`)                // check if user exists in database.
+            .get()
+            .then(doc => {
+              if(!doc.exists){                        // if not, create db entry.
+                db.collection('customers')
+                  .doc(email)
+                  .set({ uid })
+                  .catch(err => console.log('signup db error', err))
+              }
+            })
+          
+          document.querySelector('#loginModal .close').click();   // close the modal.
+        })
+        .catch(error => setError(error?.message))
   }
 
   return (
@@ -41,7 +71,7 @@ function SignIn() {
             }
           </div>
         </div>
-        <div className="row">
+        <div className="row row2">
           <div className="col">
             <div className="signIn__form">
               <h2>Sign In</h2>
@@ -81,15 +111,13 @@ function SignIn() {
                 </Link>
 
                 <hr/>
-
-                <div className='w-100 d-flex justify-content-center'>
-                  <button className='btn btn-light d-flex'>
-                    <img className='mix-blend-mode mr-1' src="https://developers.google.com/identity/images/g-logo.png" height="25" width="25" alt="google" />
-                    Sign In With Google
-                  </button>
-                </div>
-                
               </form>
+              <div className='w-100 d-flex justify-content-center'>
+                <button className='btn btn-light d-flex' onClick={signInWithGoogle}>
+                  <img className='mix-blend-mode mr-1' src="https://developers.google.com/identity/images/g-logo.png" height="25" width="25" alt="google" />
+                  Sign In With Google
+                </button>
+              </div>
             </div>
           </div>
           <div className="col">
@@ -98,7 +126,7 @@ function SignIn() {
               src="//st3.depositphotos.com/3126965/13277/v/450/depositphotos_132775264-stock-illustration-woman-doing-shopping-online.jpg"
               alt="banner"
             />
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <button className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
           </div>

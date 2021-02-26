@@ -39,3 +39,11 @@
   display: none;
 }
 
+@media screen and (max-width: 484px){
+  .row2{
+    flex-direction: column-reverse;
+  }
+  .signIn__image{
+    height: 30vh;
+  }
+}

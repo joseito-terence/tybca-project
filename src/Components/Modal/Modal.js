@@ -13,7 +13,7 @@ const Modal = ({ id, buttonText, buttonIcon, className, title, children }) => {
         {buttonText}
       </button>
 
-      <div className="modal fade" id={id} data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div className="modal fade" id={id} /*data-backdrop="static"*/ data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">

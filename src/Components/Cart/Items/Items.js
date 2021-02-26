@@ -1,14 +1,21 @@
 import React from 'react';
-import Item from './Item';
 import './Items.css';
+import Item from './Item';
 
-function Items() {
+function Items({ items, itemInfo }) {
   return (
-    <div className='items w-100'>
-      <h3>3 ITEMS</h3>
-      <Item name="PRODUCT NAME" price="₹10,000.00" image="logo512.png" />
-      <Item name="PRODUCT NAME" price="₹10,000.00" image="logo512.png" />
-      <Item name="PRODUCT NAME" price="₹10,000.00" image="logo512.png" />
+    <div className='cartItems w-100'>
+      <h3>{items.length} ITEMS</h3>
+      {itemInfo.map((item, idx) => 
+        <Item 
+          key={idx} 
+          id={item.id}
+          name={item.title} 
+          price={item.price} 
+          image={item.images[0]} 
+          quantity={items[idx]?.qty}
+        />
+      )}
     </div>
   )
 }

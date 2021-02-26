@@ -27,13 +27,13 @@ function ItemsCarousel() {
       </ol>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <Items products={products.slice(0,8)} />
+          <Items key='.1' products={products.slice(0,8)} />
         </div>
         <div className="carousel-item">
-          <Items products={products.slice(8,16)} />
+          <Items key='.2' products={products.slice(8,16)} />
         </div>
         <div className="carousel-item">
-          <Items products={products.slice(16,24)} />
+          <Items key='.3' products={products.slice(16,24)} />
         </div>
       </div>
       <a className="carousel-control-prev" href="#carouselItems" role="button" data-slide="prev">
