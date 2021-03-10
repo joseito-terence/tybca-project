@@ -39,6 +39,7 @@ function Cart() {
     if(itemInfo.length !== 0){
       setTotalAmount(items.reduce((total, curr, i) => (total + curr.qty * itemInfo[i].price), 0));
     }
+    // eslint-disable-next-line
   }, [itemInfo]);
 
 

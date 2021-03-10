@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./SignIn.css";
 import db, { auth, provider } from '../../firebase';
 
 function SignIn() {
+  const history = useHistory();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -13,6 +14,8 @@ function SignIn() {
   const handleChange = ({ target }) => {
     setState({ ...state, [target.id]: target.value });
   };
+
+  const closeModal = () => document.querySelector('#loginModal .close').click();  // function to close the modal if necessary
 
   const signIn = (event) => {
     event.preventDefault();
@@ -27,7 +30,7 @@ function SignIn() {
           auth.signInWithEmailAndPassword(state.email, state.password)
               .then(() => { 
                 console.log('SignIn Successful') 
-                document.querySelector('#loginModal .close').click();
+                closeModal();
               })
               .catch(error => setError(error?.message));
         }
@@ -51,9 +54,14 @@ function SignIn() {
               }
             })
           
-          document.querySelector('#loginModal .close').click();   // close the modal.
+          closeModal()   // close the modal.
         })
         .catch(error => setError(error?.message))
+  }
+
+  const goToSignUp = () => { // function to take the user to the sign up page.
+    closeModal();
+    history.push('/signup');    // navigate to /signup
   }
 
   return (
@@ -106,14 +114,14 @@ function SignIn() {
                   value="Sign in"
                 />
 
-                <Link to="/signup" className="btn btn-link mt-2">
+                <button className="btn btn-link mt-2" onClick={goToSignUp}> 
                   Not a member? Create an account here.
-                </Link>
+                </button>
 
                 <hr/>
               </form>
               <div className='w-100 d-flex justify-content-center'>
-                <button className='btn btn-light d-flex' onClick={signInWithGoogle}>
+                <button type='button' className='btn btn-light d-flex' onClick={signInWithGoogle}>
                   <img className='mix-blend-mode mr-1' src="https://developers.google.com/identity/images/g-logo.png" height="25" width="25" alt="google" />
                   Sign In With Google
                 </button>

@@ -26,7 +26,7 @@ function Wishlist({ miniView }) {
       const ids = wishlist.map(item => item.id);
       
       db.collection('products')
-        .where('__name__', 'in', ids)
+        .where('__name__', 'in', ids)                         // the '__name__' is a property that holds the 
         .get()
         .then(snap => setItemInfo(snap.docs.map(doc => ({ ...doc.data(), id: doc.id }))))
         .catch(err => console.error(err));

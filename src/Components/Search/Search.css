@@ -2,8 +2,6 @@
   width: 100%;
   border-radius: 10px;
   position: relative;
-
-
 }
 
 .ais-SearchBox-input {
@@ -28,7 +26,7 @@
 }
 
 .ais-Hits {
-  display: none;
+  /* display: none; */
   position: absolute;
   background: #fff;
   padding: 10px 8px;
@@ -51,4 +49,5 @@
 
 .ais-Hits-item > a{
   text-decoration: none;
+  color: black;
 }

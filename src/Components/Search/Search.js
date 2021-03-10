@@ -1,6 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { Hits, InstantSearch, SearchBox } from 'react-instantsearch-dom';
+import { 
+  Hits, 
+  InstantSearch, 
+  SearchBox, 
+  Highlight,
+  // connectAutoComplete, 
+  connectStateResults
+} from 'react-instantsearch-dom';
 import './Search.css';
 import { Link } from 'react-router-dom';
 
@@ -9,23 +16,6 @@ function Search() {
   const API_KEY = '6daedc34851003273065017840c58ad6'; 
   const searchClient = algoliasearch(APP_ID, API_KEY);
 
-  const showHits = () => 
-    document.querySelector('.ais-Hits').style.display = 'block';
-
-  const hideHits = () => 
-    document.querySelector('.ais-Hits').style.display = 'none';
-  
-  useEffect(() => {
-    const ais_searchBox = document.querySelector('.ais-SearchBox-input');
-    ais_searchBox.addEventListener('focus', showHits);
-    ais_searchBox.addEventListener('blur', hideHits);
-
-    return () => {
-      ais_searchBox.removeEventListener('focus', showHits);
-      ais_searchBox.removeEventListener('blur', hideHits);
-    }
-  }, []);
-
   return (
     <div className="search">
       <InstantSearch
@@ -33,26 +23,45 @@ function Search() {
         indexName='Products'
       >
         <SearchBox translations={{ placeholder: 'Search' }} />
-        <Hits hitComponent={Hit} />
+        <Results />
+        {/* <Autocomplete /> */}
       </InstantSearch>
     </div>
   )
 }
 export default Search;
 
+// const Autocomplete = connectAutoComplete(
+//   ({ hits, currentRefinement, refine }) => (
+//     <>
+//       <input
+//         type="search"
+//         className='form-control'
+//         value={currentRefinement}
+//         onChange={event => refine(event.currentTarget.value)}
+//       />
+//       <Results />
+//     </>
+//   )
+// );
+
+const Results = connectStateResults(
+  ({ searchState }) => 
+    searchState && searchState.query ? (
+      <Hits hitComponent={Hit} />
+    ) : //<div>No query</div>
+    null
+);
 
 function Hit({ hit }) {
   return (
     <Link to={`/product/${hit.objectID}`}>
       <div className='hit'>
         <div className="hit__title">
-          {hit.title}
+          <Highlight hit={hit} attribute='title' tagName='b' />
+          {/* {hit.title} */}
         </div>
-        {/* <div className="hit__tags">
-          {hit.tags.join(', ')}
-        </div> */}
       </div>
     </Link>
-    
   )
 }

@@ -57,7 +57,7 @@ const Product = (props) => {
         setMainImage(doc.data().images[0]);
       })
       .catch(err => console.log(err.message));
-  }, []);
+  }, [productId]);
 
   return (
     <div className='product__container'>
