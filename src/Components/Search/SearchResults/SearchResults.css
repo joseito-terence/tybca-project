@@ -1,0 +1,32 @@
+.searchResults__options .ais-SortBy-select {
+  height: calc(1.5em + 0.5rem + 2px);
+}
+
+/* Hits */
+
+.searchResults ul.ais-Hits-list {
+  list-style: none;
+}
+
+.searchResults li.ais-Hits-item {
+}
+
+.hit__image {
+  width: 150px;
+  height: 150px;
+}
+
+.hit__image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hit__rating {
+  color: var(--primary-accent);
+}
+
+.hit__price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}

@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Modal from '../Modal';
 import SignIn from "../SignIn";
 import db, { auth } from "../../firebase";
-import Search from "../Search/Search";
+import Search from "./SearchBar";
 
 function Header() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -42,8 +42,6 @@ function Header() {
           />
         </Link>
         
-        
-
         {/* <form className="header__search">
           <input
             type="text"

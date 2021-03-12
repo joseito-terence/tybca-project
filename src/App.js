@@ -10,6 +10,7 @@ import Cart from './Components/Cart/';
 import Product from './Components/Product/';
 import Wishlist from './Components/Wishlist/';
 import SignUp from './Components/SignUp/';
+import Search from './Components/Search/';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path='/search' component={Search} />
           <Route path='/signup' component={SignUp} />
           <Route path='/wishlist' component={Wishlist} />
           <Route path='/product/:productId' component={Product} />
