@@ -8,17 +8,14 @@ import {
 } from 'react-instantsearch-dom';
 import './SearchBar.css';
 import { Link } from 'react-router-dom';
-import SearchProvider from '../../SearchProvider/';
 
 function SearchBar() {
 
   return (
     <div className="searchBar">
-      <SearchProvider>
-        <SearchBox translations={{ placeholder: 'Search' }} />
-        <Results />
-        {/* <Autocomplete /> */}
-      </SearchProvider>
+      <SearchBox translations={{ placeholder: 'Search' }} />
+      <Results />
+      {/* <Autocomplete /> */}
     </div>
   )
 }

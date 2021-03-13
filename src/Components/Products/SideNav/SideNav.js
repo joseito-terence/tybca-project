@@ -1,6 +1,7 @@
 import React from "react";
-import Accordion from "../../Accordion/";
+// import Accordion from "../../Accordion/";
 import Wishlist from "../../Wishlist";
+import { RangeInput, RefinementList, } from 'react-instantsearch-dom';
 
 import { toggleHamburgerMenu } from "../../Header/Navbar/Navbar";
 
@@ -13,17 +14,16 @@ function SideNav() {
         <span>&times;</span>
       </button>
       <div>
-        <Accordion id="Categories">
-          <Accordion.Item id="CategoryA" headerText="Category A">
-            sub-categories for category A go here...
-          </Accordion.Item>
-          <Accordion.Item id="CategoryB" headerText="Category B">
-            sub-categories for category B go here...
-          </Accordion.Item>
-          <Accordion.Item id="CategoryC" headerText="Category C">
-            sub-categories for category C go here...
-          </Accordion.Item>
-        </Accordion>
+        <div className="sidenav__filters m-2">
+          <h5 className='subtitle'>Category</h5>
+          <RefinementList 
+            attribute='category' 
+            limit={8} 
+            showMore
+          />
+          <h5 className='subtitle'>Price</h5>
+          <RangeInput attribute='price' translations={{ submit: 'Go' }} />
+        </div>
 
         <div className="sidenav__wishlist">
           <Wishlist miniView />
@@ -34,3 +34,5 @@ function SideNav() {
 }
 
 export default SideNav;
+
+

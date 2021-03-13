@@ -1,51 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './ItemsCarousel.css';
 import Items from '../Items/';
-import db from '../../../firebase';
-
+import { connectPagination } from 'react-instantsearch-core';
 
 function ItemsCarousel() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    db.collection('products')
-      .limit('24')
-      .get()
-      .then(snap => 
-        setProducts(snap.docs.map(doc => ({id: doc.id, ...doc.data()})))
-      )
-      .catch(err => console.log(err.message));
-  }, []);
-
-  // console.log(products);
-
   return (
-    <div id="carouselItems" className="carousel slide" data-ride="carousel" data-interval='0'>
-      <ol className="carousel-indicators">
-        <li data-target="#carouselItems" data-slide-to="0" className="active"></li>
-        <li data-target="#carouselItems" data-slide-to="1"></li>
-        <li data-target="#carouselItems" data-slide-to="2"></li>
-      </ol>
+    <div id="carouselItems" className="carousel slide" data-ride="carousel">
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <Items key='.1' products={products.slice(0,8)} />
-        </div>
-        <div className="carousel-item">
-          <Items key='.2' products={products.slice(8,16)} />
-        </div>
-        <div className="carousel-item">
-          <Items key='.3' products={products.slice(16,24)} />
+          <Items />
         </div>
       </div>
-      <a className="carousel-control-prev" href="#carouselItems" role="button" data-slide="prev">
-      <i className="fa fa-angle-left text-dark"></i>
-        <span className="sr-only">Previous</span>
-      </a>
-      <a className="carousel-control-next" href="#carouselItems" role="button" data-slide="next">
-        <i className="fa fa-angle-right text-dark"></i>
-        <span className="sr-only">Next</span>
-      </a>
+      
+      <Pagination />
     </div>
   )
 }
 
 export default ItemsCarousel;
+
+const Pagination = connectPagination(
+  ({ currentRefinement, nbPages, refine, createURL }) => (
+    <>
+      {/* NEXT AND PREVIOUS BUTTONS */}
+      <button className="carousel-control-prev btn" data-slide="prev" 
+        onClick={() => refine(currentRefinement - 1)}
+        disabled={currentRefinement === 1}
+      >
+        <i className="fa fa-angle-left text-dark"></i>
+        <span className="sr-only">Previous</span>
+      </button>
+      <button className="carousel-control-next btn" data-slide="next"
+        onClick={() => refine(currentRefinement + 1)}
+        disabled={currentRefinement === nbPages}
+      >
+        <i className="fa fa-angle-right text-dark"></i>
+        <span className="sr-only">Next</span>
+      </button>
+
+      {/* PAGE INDICATORS (dots at the bottom) */}
+      <ul className='carousel-indicators'>
+        {new Array(nbPages).fill(null).map((_, index) => {
+          const page = index + 1;
+          const activeClass = currentRefinement === page ? 'active' : '';
+
+          return (
+            <a
+              key={index}
+              href={createURL(page)}
+              onClick={() => refine(page)}
+            >
+              <li className={activeClass}>
+                {page}
+              </li>
+            </a>
+          );
+        })}
+      </ul>
+    </>
+  )
+);
