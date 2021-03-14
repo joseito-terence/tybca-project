@@ -18,6 +18,12 @@ function Footer() {
             <li>
               <Link to="/products">Products</Link>
             </li>
+            <li>
+              <Link to="/wishlist">Wishlist</Link>
+            </li>
+            <li>
+              <Link to="/cart">Cart</Link>
+            </li>
           </ul>
         </div>
         <div className="footer__contact-form">

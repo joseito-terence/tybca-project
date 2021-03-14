@@ -45,7 +45,6 @@
   border-top: 0.5px solid #0000002e;
 }
 
-
 @media (max-width: 768px) {
   /* Responsive Sidebar media query */
   .sidenav {
@@ -63,7 +62,7 @@
   .sidenav__close {
     display: block;
   }
-} 
+}
 /******************************/
 
 /* SIDEBAR FILTERS */
@@ -75,6 +74,20 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1.3px;
+}
+
+/* SortBy */
+select.ais-SortBy-select {
+  width: 96%;
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  border-radius: 4px;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+option.ais-SortBy-option{
+  color: black;
 }
 
 /* RefinementList */

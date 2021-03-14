@@ -1,11 +1,21 @@
 import React from 'react';
 import './ItemsCarousel.css';
 import Items from '../Items/';
-import { connectPagination } from 'react-instantsearch-core';
+import { connectPagination, connectSearchBox } from 'react-instantsearch-core';
+import { useLocation } from 'react-router';
+
+// A custom hook that builds on useLocation to parse
+// the query string.
+const useQuery = () => new URLSearchParams(useLocation().search);
+
 
 function ItemsCarousel() {
+  let searchQuery = useQuery();
+
   return (
     <div id="carouselItems" className="carousel slide" data-ride="carousel">
+      <VirtualSearchBox defaultRefinement={searchQuery.get('search')} />
+      
       <div className="carousel-inner">
         <div className="carousel-item active">
           <Items />
@@ -18,6 +28,8 @@ function ItemsCarousel() {
 }
 
 export default ItemsCarousel;
+
+const VirtualSearchBox = connectSearchBox(() => null);
 
 const Pagination = connectPagination(
   ({ currentRefinement, nbPages, refine, createURL }) => (

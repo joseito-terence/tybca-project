@@ -41,6 +41,7 @@
   width: 100%;
   cursor: default;
   border-radius: 3px;
+  color: black;
 }
 
 .searchBar .ais-Hits-item:hover {
