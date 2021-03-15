@@ -41,7 +41,7 @@
 
 .sidenav__wishlist {
   height: 30vh;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   border-top: 0.5px solid #0000002e;
 }
 
@@ -67,7 +67,7 @@
 
 /* SIDEBAR FILTERS */
 .sidenav__filters > .subtitle {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   margin-top: 8px;
   color: white;
   font-size: 14px;

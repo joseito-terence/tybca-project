@@ -1,16 +1,15 @@
 import React from "react";
-// import Accordion from "../../Accordion/";
 import Wishlist from "../../Wishlist";
 import { RangeInput, RefinementList, } from 'react-instantsearch-dom';
 
-import { toggleHamburgerMenu } from "../../Header/Navbar/Navbar";
+import { toggleFilter } from "../ItemsCarousel/ItemsCarousel";
 import {  SortBy, connectCurrentRefinements } from 'react-instantsearch-dom';
 import "./SideNav.css";
 
 function SideNav() {
   return (
     <div className="sidenav">
-      <button type="button" className="sidenav__close btn" onClick={toggleHamburgerMenu}>
+      <button type="button" className="sidenav__close btn" onClick={toggleFilter}>
         <span>&times;</span>
       </button>
       <div>

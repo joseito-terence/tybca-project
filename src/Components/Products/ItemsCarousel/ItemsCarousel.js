@@ -3,11 +3,12 @@ import './ItemsCarousel.css';
 import Items from '../Items/';
 import { connectPagination, connectSearchBox } from 'react-instantsearch-core';
 import { useLocation } from 'react-router';
+import { ReactComponent as FilterIcon } from '../../../Assets/filter-results-button.svg'
+
 
 // A custom hook that builds on useLocation to parse
 // the query string.
 const useQuery = () => new URLSearchParams(useLocation().search);
-
 
 function ItemsCarousel() {
   let searchQuery = useQuery();
@@ -23,6 +24,10 @@ function ItemsCarousel() {
       </div>
       
       <Pagination />
+
+      <button className="sidenav__toggleBtn btn" onClick={toggleFilter}>
+        <FilterIcon />
+      </button>
     </div>
   )
 }
@@ -72,3 +77,8 @@ const Pagination = connectPagination(
     </>
   )
 );
+
+
+export const toggleFilter = () => {   // function to expand and collapse the SideNav.
+  document.querySelector(".sidenav")?.classList.toggle("expand");
+};

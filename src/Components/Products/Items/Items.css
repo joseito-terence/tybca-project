@@ -1,3 +1,7 @@
+.items > .container {
+  margin-bottom: 14px;
+}
+
 /* .items > .container > .row{
   padding: 2px;
 } */
@@ -19,18 +23,6 @@
   height: 100%;
   object-fit: cover;
 }
-
-/* .items .card-img-overlay {
-  top: auto;
-  bottom: -22px;
-  padding-top: 0.45rem;
-  background-color: #0c3763e3;
-  border-radius: 0;
-}
-
-.card-img-overlay {
-  top: auto;
-} */
 
 .items .card-overlay {
   position: absolute;
@@ -56,4 +48,16 @@
 
 .items .rating {
   margin-top: 1rem;
+}
+
+@media (max-width: 768px){
+  .items .col > .card{
+    height: calc((100vh - 160px) / 4);
+  }
+}
+
+@media (max-width: 568px){
+  .items .col > .card{
+    height: calc((100vh - 208px) / 4);
+  }
 }

@@ -33,11 +33,11 @@
   background-color: #00274b;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navbar__hamburger{
     display: inline-block;
   }
   .navbar__items{
     margin-top: -11px;
   }
-}
+} */
