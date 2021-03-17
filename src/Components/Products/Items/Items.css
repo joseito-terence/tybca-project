@@ -61,3 +61,17 @@
     height: calc((100vh - 208px) / 4);
   }
 }
+
+
+
+/* Display svg for when not hits */
+.hits__empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 80vh;
+}
+.hits__empty > svg {
+  width: 50%;
+  max-width: 350px;
+}

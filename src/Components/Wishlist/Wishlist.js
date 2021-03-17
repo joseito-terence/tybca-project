@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import db, { auth } from "../../firebase";
 import "./Wishlist.css";
 import WishlistProduct from "./WishlistProduct/WishlistProduct";
+import { ReactComponent as EmptyStreetSvg } from '../../Assets/undraw_empty_street.svg';
 
 
 function Wishlist({ miniView }) {
@@ -62,6 +63,12 @@ function Wishlist({ miniView }) {
             miniView={miniView}
           />
         ))}
+
+        {(itemInfo.length === 0 && !miniView ) && (
+          <div className="col wishlist__empty">
+            <EmptyStreetSvg />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,12 +3,16 @@ import Items from "./Items";
 import Summary from "./Summary";
 import "./Cart.css";
 import db, { auth } from '../../firebase';
+import Checkout from "./Checkout";
+import { useLocation } from "react-router-dom";
 
 function Cart() {
   const [items, setItems] = useState([]);            // items or products in the cart with quantity.
   const [itemInfo, setItemInfo] = useState([]);      // information for the items.
   const [totalAmount, setTotalAmount] = useState(0); // total amount of products excluding other charges.
   const email = auth.currentUser?.email;
+  const location = useLocation();         
+  const [pathName, setPathName] = useState('');      
 
   useEffect(() => { // get items from cart.   
     const unsubscribe = db.doc(`customers/${email}`).collection('cart')
@@ -35,25 +39,33 @@ function Cart() {
       setItemInfo([]);    // items in cart are 0, reset the array.
   }, [items]);
 
-  useEffect(() => {
+  useEffect(() => {       // function for calculating total of the items in the cart.
     if(itemInfo.length !== 0){
       setTotalAmount(items.reduce((total, curr, i) => (total + curr.qty * itemInfo[i].price), 0));
     }
-    // eslint-disable-next-line
-  }, [itemInfo]);
+  }, [itemInfo, items]);
 
+  useEffect(() => {
+    setPathName(location.pathname);   // set path whenever url changes.
+  }, [location]);
 
   return (
     <div className="shoppingCart mx-auto p-5">
       <div className="container">
         <div className="row">
           <div className="col">
-            <h2 className="pb-3 ml-2">SHOPPING CART</h2>
+            <h2 className="pb-3">
+              {pathName === '/cart' ? 'SHOPPING CART' : 'CHECKOUT'}
+            </h2>
           </div>
         </div>
         <div className="row">
           <div className="col-lg-8 col-md-6 col-sm-12">
-            <Items items={items} itemInfo={itemInfo} />
+            {pathName === '/cart' ? 
+              <Items items={items} itemInfo={itemInfo} />
+              :
+              <Checkout />
+            }
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
             <Summary totalAmount={totalAmount} />

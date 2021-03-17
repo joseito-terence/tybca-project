@@ -1,6 +1,7 @@
 import React from 'react';
 import './Items.css';
 import Item from './Item';
+import { ReactComponent as EmptyCartSvg } from '../../../Assets/undraw_empty_cart.svg';
 
 function Items({ items, itemInfo }) {
   return (
@@ -15,6 +16,12 @@ function Items({ items, itemInfo }) {
           image={item.images[0]} 
           quantity={items[idx]?.qty}
         />
+      )}
+
+      {items.length === 0 && (
+        <div className="cartItems__empty">
+          <EmptyCartSvg />
+        </div>
       )}
     </div>
   )

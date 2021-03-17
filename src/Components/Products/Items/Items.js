@@ -2,6 +2,8 @@ import React from "react";
 import "./Items.css";
 import { Link } from "react-router-dom";
 import { Configure, connectHits } from "react-instantsearch-dom";
+import { ReactComponent as VoidSvg } from '../../../Assets/undraw_void.svg';
+import { currencyFormat } from "../../../Utilities/currencyFormat";
 
 function Items() {
   return (
@@ -42,6 +44,13 @@ const Hits = connectHits(({ hits }) => (
         </div>
       ))}
     </div>
+    {hits.length === 0 && (
+      <div className="row">
+        <div className="col hits__empty">
+          <VoidSvg />
+        </div>
+      </div>
+    )}
   </div>
 ));
 
@@ -58,7 +67,7 @@ function Item({ productId, productName, imgSrc, price }) {
           <i className="fas fa-star fa-sm text-warning" aria-hidden="true"></i>
           <i className="far fa-star fa-sm text-warning" aria-hidden="true"></i>
         </p>
-        <p>₹ {price}.00</p>
+        <p>{currencyFormat(price)}</p>
       </div>
     </Link>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import './WishlistProduct.css';
 import { Link } from "react-router-dom";
 import db, { auth } from '../../../firebase';
+import { currencyFormat } from '../../../Utilities/currencyFormat';
 
 function WishlistProduct({ id, title, price, img, category, miniView }) {
   const email = auth.currentUser?.email;
@@ -32,7 +33,7 @@ function WishlistProduct({ id, title, price, img, category, miniView }) {
             <i className="far fa-star fa-sm text-primary"></i>
           </p>
           <hr />
-          <h6 className="mb-3">{`₹ ${price}.00`}</h6>
+          <h6 className="mb-3">{currencyFormat(price)}</h6>
           <button type="button" className="btn btn-primary btn-sm mr-1 mb-2">
             <i className="fas fa-shopping-cart pr-2"></i>
             Add to cart

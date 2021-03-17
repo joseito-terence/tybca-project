@@ -21,7 +21,7 @@ function App() {
           <Route path='/signup' component={SignUp} />
           <Route path='/wishlist' component={Wishlist} />
           <Route path='/product/:productId' component={Product} />
-          <Route path='/cart' component={Cart} />
+          <Route path={['/cart', '/checkout']}component={Cart} />
           <Route path='/products' component={Products} />
           <Route path='/' component={Home} />
         </Switch>

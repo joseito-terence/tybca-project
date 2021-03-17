@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import db, { auth } from '../../../../firebase';
+import { currencyFormat } from '../../../../Utilities/currencyFormat';
 import './Item.css';
 
 function Item({ id, name, price, image, quantity }) {
@@ -26,7 +27,7 @@ function Item({ id, name, price, image, quantity }) {
       <div>
         <div className="item__details">
           <div className="item__name">{name}</div>
-          <div className="item__price">{price}</div>
+          <div className="item__price">{currencyFormat(price)}</div>
         </div>
 
         <div className="item__options">

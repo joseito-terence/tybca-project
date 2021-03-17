@@ -3,6 +3,7 @@ import './Product.css';
 import Accordion from '../Accordion/Accordion';
 import db, { auth } from '../../firebase';
 import { useParams } from 'react-router-dom';
+import { currencyFormat } from '../../Utilities/currencyFormat';
 
 const Product = (props) => {
   const { productId } = useParams();
@@ -76,7 +77,7 @@ const Product = (props) => {
       <div className='product__summary'>
         <h2 id='product__name'>{product?.title}</h2>
         <div className='product__credebility'>
-          <p className='product__value'>₹{product?.price}.00</p>
+          <p className='product__value'>{currencyFormat(product?.price)}</p>
           <div className='product__ratings'>
             <p className='product__rating-stars'>Ratings</p>
             <i className='fas fa-star'></i>
