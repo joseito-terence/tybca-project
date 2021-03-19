@@ -64,7 +64,7 @@ function Cart() {
             {pathName === '/cart' ? 
               <Items items={items} itemInfo={itemInfo} />
               :
-              <Checkout />
+              <Checkout totalAmount={totalAmount} items={items} />
             }
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">

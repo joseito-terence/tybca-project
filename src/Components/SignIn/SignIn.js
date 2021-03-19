@@ -15,7 +15,10 @@ function SignIn() {
     setState({ ...state, [target.id]: target.value });
   };
 
-  const closeModal = () => document.querySelector('#loginModal .close').click();  // function to close the modal if necessary
+  const closeModal = () => {  // function to close the modal if necessary
+    setState({ email: '', password: '' });      // reset email and password
+    document.querySelector('#loginModal .close').click() 
+  };  
 
   const signIn = (event) => {
     event.preventDefault();
@@ -114,7 +117,7 @@ function SignIn() {
                   value="Sign in"
                 />
 
-                <button className="btn btn-link mt-2" onClick={goToSignUp}> 
+                <button type='button' className="btn btn-link mt-2" onClick={goToSignUp}> 
                   Not a member? Create an account here.
                 </button>
 
@@ -129,12 +132,14 @@ function SignIn() {
             </div>
           </div>
           <div className="col">
+            {/* THE IMAGE IS HERE */}
             <img
               className='signIn__image'
               src="//st3.depositphotos.com/3126965/13277/v/450/depositphotos_132775264-stock-illustration-woman-doing-shopping-online.jpg"
               alt="banner"
             />
-            <button className="close" data-dismiss="modal" aria-label="Close">
+            {/* THIS IS THE CLOSE BUTTON */}
+            <button className="close" data-dismiss="modal" aria-label="Close" onClick={closeModal}>
                 <span aria-hidden="true">&times;</span>
             </button>
           </div>

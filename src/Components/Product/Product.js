@@ -77,7 +77,13 @@ const Product = (props) => {
       <div className='product__summary'>
         <h2 id='product__name'>{product?.title}</h2>
         <div className='product__credebility'>
-          <p className='product__value'>{currencyFormat(product?.price)}</p>
+          <p className='product__value'>
+            {(product?.stock > 0) ?                                                 // if in stock 
+              currencyFormat(product?.price)                                        // display price
+              :
+              <span className='text-danger font-weight-bold'>Out of Stock</span>    // else display this message
+            }
+          </p>
           <div className='product__ratings'>
             <p className='product__rating-stars'>Ratings</p>
             <i className='fas fa-star'></i>
@@ -103,7 +109,7 @@ const Product = (props) => {
             </Accordion.Item>
           </Accordion>
         </div>
-        <button className='product__cart btn btn-primary' onClick={addToCart}>
+        <button className='product__cart btn btn-primary' onClick={addToCart} disabled={(product?.stock <= 0)}>
           ADD TO CART
         </button>
         <button className='product__wishlist btn btn-link btn-block' onClick={addToWishList}>
