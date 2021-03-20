@@ -10,6 +10,7 @@ import Cart from './Components/Cart/';
 import Product from './Components/Product/';
 import Wishlist from './Components/Wishlist/';
 import SignUp from './Components/SignUp/';
+import AboutUs from './Components/AboutUs/';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/product/:productId' component={Product} />
           <Route path={['/cart', '/checkout']}component={Cart} />
           <Route path='/products' component={Products} />
+          <Route path='/aboutus' component={AboutUs} />
           <Route path='/' component={Home} />
         </Switch>
         
