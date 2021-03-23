@@ -61,9 +61,10 @@ function Cart() {
         </div>
         <div className="row">
           <div className="col-lg-8 col-md-6 col-sm-12">
-            {pathName === '/cart' ? 
+            {pathName === '/cart' && 
               <Items items={items} itemInfo={itemInfo} />
-              :
+            }
+            {pathName === '/checkout' && 
               <Checkout totalAmount={totalAmount} items={items} itemInfo={itemInfo} />
             }
           </div>

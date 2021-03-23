@@ -64,9 +64,18 @@ function commitOrderToDB(razorpay_payment_id, orderDetails) {
     Promise.all(promises)
         .then(() => {
             console.log('Comitted to db Successful');
-            return db.doc(`customers/${email}/cart`).delete();
+            let deleteQueue = []; // store the promises to deleting items in the cart.
+            
+            orderDetails.forEach(order => 
+                deleteQueue.push(
+                    db.doc(`customers/${email}/cart/${order.id}`).delete()
+                )    
+            );
+            
+            return Promise.all(deleteQueue);
         })
         .then(() => {
+            console.log('cart now empty');
             window.location.href = '/products';
         })
         .catch(err => console.log(err));

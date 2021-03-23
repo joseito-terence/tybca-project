@@ -20,9 +20,8 @@ const Hits = connectHits(({ hits }) => (
   <div className="container">
     <div className="row">
       {hits.slice(0, 2).map(hit => (
-        <div className="col">
+        <div className="col" key={hit.objectID}>
           <Item
-            key={hit.objectID}
             productId={hit.objectID}
             productName={hit.title}
             imgSrc={hit.images}
@@ -33,9 +32,8 @@ const Hits = connectHits(({ hits }) => (
     </div>
     <div className="row">
       {hits.slice(2, 8).map(hit => (
-        <div className="col col-md-4 col-6">
+        <div className="col col-md-4 col-6" key={hit.objectID}>
           <Item
-            key={hit.objectID}
             productId={hit.objectID}
             productName={hit.title}
             imgSrc={hit.images}
