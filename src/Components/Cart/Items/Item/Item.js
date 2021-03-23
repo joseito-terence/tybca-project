@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import db, { auth } from '../../../../firebase';
 import { currencyFormat } from '../../../../Utilities/currencyFormat';
 import './Item.css';
@@ -26,7 +27,11 @@ function Item({ id, name, price, image, quantity }) {
       
       <div>
         <div className="item__details">
-          <div className="item__name">{name}</div>
+          <div className="item__name">
+            <Link to={`product/${id}`} className='text-reset'>
+              {name}
+            </Link>
+          </div>
           <div className="item__price">{currencyFormat(price)}</div>
         </div>
 

@@ -8,8 +8,9 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar__items">
           <NavItem link="/" text="Home" />
-          <NavItem link="/aboutus" text="About Us" />
           <NavItem link="/products" text="Products" />
+          <NavItem link="/orders" text="Orders" />
+          <NavItem link="/aboutus" text="About Us" />
         </div>
       </nav>
     </section>

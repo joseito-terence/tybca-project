@@ -3,7 +3,7 @@ import db, { auth } from '../../../firebase';
 import { makePayment } from '../../../Utilities/razorpay';
 import './Checkout.css';
 
-function Checkout({ totalAmount }) {
+function Checkout({ totalAmount, items, itemInfo }) {
   const initialState = {
     address: '',        // address line 1
     address2: '',       // address line 2
@@ -31,6 +31,13 @@ function Checkout({ totalAmount }) {
   const submit = event => {
     event.preventDefault();
     
+    const orderDetails = items.map((item, idx) => ({ 
+      ...item, 
+      title: itemInfo[idx].title,
+      image: itemInfo[idx].images[0],
+      sellerId: itemInfo[idx].sellerId
+    }))
+
     if(JSON.stringify(originalState) !== JSON.stringify({ ...address, phoneNo })){    // check if details are changed.
       db.doc(`customers/${customer_email}`)
         .set({                                // set() generally would override the document
@@ -39,11 +46,11 @@ function Checkout({ totalAmount }) {
         }, { merge: true })                   // the merge option allows to merge if the doc exists.
         .then(() => {
           console.log('Address saved!');
-          makePayment(totalAmount, phoneNo);           // this function will open Razorpay's payment modal
+          makePayment(totalAmount, phoneNo, orderDetails);           // this function will open Razorpay's payment modal
         })
         .catch(err => console.error(err));
     }else{
-      makePayment(totalAmount, phoneNo);    // this function will open Razorpay's payment modal
+      makePayment(totalAmount, phoneNo, orderDetails);    // this function will open Razorpay's payment modal
     } 
   }
 
