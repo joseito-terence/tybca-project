@@ -10,7 +10,7 @@ function Orders() {
   
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
-      setUid(authUser.uid || null);
+      setUid(authUser?.uid || null);
     })
   }, []);
 
@@ -27,7 +27,7 @@ function Orders() {
               ({ 
                 ...doc.data(), 
                 id: doc.id, 
-                order_date: doc.data().order_date.toDate().toString() 
+                order_date: doc.data().order_date.toDate().toString().slice(0, 24) 
               })
             )
           )
@@ -54,6 +54,7 @@ function Orders() {
           </div>
         </div>
       ))}
+      {!uid && <p>Login to view your orders.</p>}
     </div>
   )
 }
