@@ -4,6 +4,8 @@ import Accordion from '../Accordion/Accordion';
 import db, { auth } from '../../firebase';
 import { useParams } from 'react-router-dom';
 import { currencyFormat } from '../../Utilities/currencyFormat';
+import Reviews from './Reviews';
+import WriteAReview from './WriteAReview';
 
 const Product = (props) => {
   const { productId } = useParams();
@@ -85,17 +87,23 @@ const Product = (props) => {
             }
           </p>
           <div className='product__ratings'>
-            <p className='product__rating-stars'>Ratings</p>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
+            <p className='product__rating-stars mr-1'>Ratings</p>
+            <span className='text-warning'>
+              {[...Array(5)].map((x, i) => (
+                <i 
+                  className={`
+                    ${(i + 1) <= product?.rating ? 'fas' : 'far'} 
+                    fa-star 
+                    ${!product?.rating && 'text-secondary'}
+                  `}
+                ></i>
+              ))}
+            </span>
           </div>
         </div>
-        <button className="product__review btn btn-link">
-          Write a Review
-        </button>
+        {email && 
+          <WriteAReview productId={productId} currentRating={product?.rating} />
+        } 
         <div className='product__nav'>
           <Accordion id='productNav'>
             <Accordion.Item id='details' headerText='DETAILS'>
@@ -105,7 +113,7 @@ const Product = (props) => {
               {product.description}
             </Accordion.Item>
             <Accordion.Item id='reviews' headerText='REVIEWS'>
-              Reviews...............
+              <Reviews productId={productId} />
             </Accordion.Item>
           </Accordion>
         </div>

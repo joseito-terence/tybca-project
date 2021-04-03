@@ -70,13 +70,13 @@
   padding: 0;
 }
 
-.product__rating-stars {
-  font-size: 22px;
-  margin: 0;
+.product__ratings i {
+  font-size: 1.25rem;
 }
 
-.product__review{
-  float: right;
+.product__rating-stars {
+  font-size: 18px;
+  margin: 0;
 }
 
 .product__nav {
