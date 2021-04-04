@@ -26,7 +26,9 @@ function WriteAReview({ productId, currentRating = 0 }) {
       .then(() => {
         document.querySelector('#ModalWriteAReview button.close').click();
         
-        return db.doc(`products/${productId}`).update({ rating: (currentRating + state.rating) / 2 })
+        const newRating = (currentRating === 0) ? state.rating : ((currentRating + state.rating) / 2 );
+                
+        return db.doc(`products/${productId}`).update({ rating: newRating });
       })
       .catch(err => console.log(err));
   }
