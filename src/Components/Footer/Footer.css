@@ -34,7 +34,7 @@
 }
 
 /* DETAILS */
-.footer__details > img {
+.footer__details > svg {
   display: block;
   height: 60px;
   width: 60px;

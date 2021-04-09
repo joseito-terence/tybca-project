@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link } from 'react-router-dom';
+import db, { auth } from "../../firebase";
 
 import Navbar from "./Navbar";
 import Modal from '../Modal';
 import SignIn from "../SignIn";
-import db, { auth } from "../../firebase";
 import Search from "./SearchBar";
+import { ReactComponent as Logo } from '../../Assets/logo001SVG.svg';
 
 function Header() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -35,11 +36,9 @@ function Header() {
     <header className="header">
       <div className="header__container">
         <Link to='/'>
-          <img
-            className="header__logo"
-            src="https://josephreisigl.files.wordpress.com/2015/08/amazonlogo.png"
-            alt="logo"
-          />
+          <span className="header__logo">
+            <Logo />
+          </span>
         </Link>
         
         {/* <form className="header__search">

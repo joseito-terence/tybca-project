@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from '../../Assets/logo001SVG.svg';
 
 function Footer() {
   return (
@@ -31,10 +32,7 @@ function Footer() {
           <a href="#link-to-seller-side">Register your business.</a>
         </div>
         <div className="footer__details">
-          <img
-            src="https://josephreisigl.files.wordpress.com/2015/08/amazonlogo.png"
-            alt=""
-          />
+          <Logo />
           <i className="fas fa-phone-alt"> (+91) 10000000000</i> <br />
           <i className="fas fa-envelope"> ourCompany@gmail.com</i>
         </div>
