@@ -6,10 +6,12 @@ import { useParams } from 'react-router-dom';
 import { currencyFormat } from '../../Utilities/currencyFormat';
 import Reviews from './Reviews';
 import WriteAReview from './WriteAReview';
+import SkeletonProduct from '../../Skeletons/SkeletonProduct';
 
 const Product = (props) => {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(true);
   const email = auth.currentUser?.email;
 
   const [mainImage, setMainImage] = useState('');
@@ -58,11 +60,12 @@ const Product = (props) => {
       .then(doc => {
         setProduct(doc.data());
         setMainImage(doc.data().images[0]);
+        setLoading(false);
       })
       .catch(err => console.log(err.message));
   }, [productId]);
 
-  return (
+  return !loading ? (
     <div className='product__container'>
       <div className='product__images-display'>
         <img
@@ -125,7 +128,9 @@ const Product = (props) => {
         </button>
       </div>
     </div>
-  );
+  ) : (
+    <SkeletonProduct />
+  )
 };
 
 export default Product;

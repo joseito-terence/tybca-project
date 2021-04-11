@@ -12,6 +12,7 @@ import Wishlist from './Components/Wishlist/';
 import SignUp from './Components/SignUp/';
 import AboutUs from './Components/AboutUs/';
 import Orders from './Components/Orders/';
+import SkeletonProduct from './Skeletons/SkeletonProduct/';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path='/skeleton' component={SkeletonProduct} />
           <Route path='/signup' component={SignUp} />
           <Route path='/wishlist' component={Wishlist} />
           <Route path='/orders' component={Orders} />
