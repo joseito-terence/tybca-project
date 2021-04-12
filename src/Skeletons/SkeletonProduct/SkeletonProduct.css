@@ -13,8 +13,16 @@
   width: 100%;
 }
 
-.skeleton.image-sub {
+/* .skeleton.image-sub {
   height: 80px;
   width: 80px;
   margin: 50px 8px 0px 8px;
+} */
+
+.skeleton.image-main {
+  max-height: 300px;
+  max-width: 300px;
+  width: 75%;
+  height: 75%;
+
 }

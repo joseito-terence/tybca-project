@@ -20,7 +20,7 @@ function Reviews({ productId }) {
   return (
     <div className='reviews'>   
       {reviews.map(review => (
-        <div className="review__card">
+        <div className="review__card" key={review.id}>
           <div className="review__message">
             {review.review}
           </div>
@@ -33,6 +33,7 @@ function Reviews({ productId }) {
           <div className="review__rating">
             {[...Array(5)].map((x, i) => (
               <i 
+                key={i}
                 className={`
                   ${(i + 1) <= review.rating ? 'fas' : 'far'} 
                   fa-star 
