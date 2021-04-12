@@ -2,10 +2,10 @@ import React from 'react';
 import Shimmer from './Shimmer';
 import './Skeleton.css';
 
-function SkeletonElement({ classes }) {
+function SkeletonElement({ classes, shimmer }) {
   return (
     <div className={`skeleton ${classes}`}>
-      <Shimmer />
+      {shimmer && <Shimmer />}
     </div>
   )
 }
