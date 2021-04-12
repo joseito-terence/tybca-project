@@ -9,6 +9,7 @@
   border: none;
   margin-left: 5px;
   font-size: 18px;
+  width: 85%;
 }
 
 .summary__promoCode > input:focus{

@@ -5,7 +5,7 @@ import './SkeletonOrders.css';
 
 function SkeletonOrders() {
   return [1,2,3].map(i => (
-    <div className='skeleton-wrapper row p-1 max-width mx-0' key={i}>
+    <div className='skeleton-wrapper row p-1 max-width mx-0 flex-row' key={i}>
       <div className="col-4 col-sm-3">
         <SkeletonElement classes='image' />
       </div>

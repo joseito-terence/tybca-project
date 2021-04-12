@@ -12,13 +12,15 @@ function Cart() {
   const [totalAmount, setTotalAmount] = useState(0); // total amount of products excluding other charges.
   const email = auth.currentUser?.email;
   const location = useLocation();         
-  const [pathName, setPathName] = useState('');      
+  const [pathName, setPathName] = useState('');   
+  const [loading, setLoading] = useState(true);   
 
   useEffect(() => { // get items from cart.   
     const unsubscribe = db.doc(`customers/${email}`).collection('cart')
-      .onSnapshot(snap => 
+      .onSnapshot(snap => {
         setItems(snap.docs.map(doc => ({ ...doc.data(), id: doc.id })))
-      );
+        setLoading(false);
+      });
     
     return () => {
       unsubscribe();
@@ -62,7 +64,7 @@ function Cart() {
         <div className="row">
           <div className="col-lg-8 col-md-6 col-sm-12">
             {pathName === '/cart' && 
-              <Items items={items} itemInfo={itemInfo} />
+              <Items items={items} itemInfo={itemInfo} loading={loading} />
             }
             {pathName === '/checkout' && 
               <Checkout totalAmount={totalAmount} items={items} itemInfo={itemInfo} />
