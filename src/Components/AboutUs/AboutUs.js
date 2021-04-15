@@ -10,17 +10,17 @@ function AboutUs() {
          </div>
 
          <div className="para1">
-            <p> We strive to offer our customers the lowest possible prices, the best available selection, and the utmost convenience.</p>
+            <p className='mb-0'> 
+               Our goal is to give customers a wide variety of their favorite products, guaranteed satisfaction, and a great online shopping experience.
+            </p>
          </div>
 
          <div className="who">
             <h2 align="center">Who We Are</h2> 
                <p id="para2">
-                  Our mission is to be Earth’s most customer-centric company. Amazon is guided by 
-                  four principles: customer obsession rather than competitor focus, passion for invention, 
-                  commitment to operational excellence, and long-term thinking. Customer reviews, 1-Click shopping, 
-                  personalized recommendations, Prime, Fulfillment by Amazon, AWS, Kindle Direct Publishing, Kindle, Fire tablets, 
-                  Fire TV, Amazon Echo, and Alexa are some of the products and services pioneered by Amazon.
+                  Our mission is to be the most competitvie company on the market. 
+                  "XYZ" is guided by sheer zeal for profits, leaving no stone unturned to get you the best services and products possible. 
+                  We aspire to meet and outmatch any bars set by our competitors, affording you the power of choice in an increasingly monopolistic market.
                </p>
          </div>
 

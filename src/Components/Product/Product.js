@@ -64,6 +64,7 @@ const Product = (props) => {
       })
       .catch(err => console.log(err.message));
   }, [productId]);
+  
 
   return !loading ? (
     <div className='container'>
@@ -111,11 +112,13 @@ const Product = (props) => {
           } 
           <div className='product__nav'>
             <Accordion id='productNav'>
-              <Accordion.Item id='details' headerText='DETAILS'>
-                Details of the product go here...
-              </Accordion.Item>
               <Accordion.Item id='description' headerText='DESCRIPTION'>
                 {product.description}
+              </Accordion.Item>
+              <Accordion.Item id='details' headerText='DETAILS'>
+                <ul className='ml-2'>
+                  {product.details?.split('\n').map(detail => <li>{detail}</li>)}
+                </ul>
               </Accordion.Item>
               <Accordion.Item id='reviews' headerText='REVIEWS'>
                 <Reviews productId={productId} />

@@ -44,6 +44,8 @@ function Reviews({ productId }) {
           </div>
         </div>
       ))}
+
+      {reviews.length === 0 && <span className='text-muted'>No Reviews found.</span>}
     </div>
   )
 }

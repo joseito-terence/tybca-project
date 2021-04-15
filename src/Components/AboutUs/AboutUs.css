@@ -15,7 +15,7 @@
 .aboutUs .who {
   color: rgb(255, 255, 255);
   background-color: rgb(115, 56, 209);
-  padding: 50px;
+  padding: 1.5rem;
 }
 
 .aboutUs h2 {
@@ -32,14 +32,14 @@
   width: 90%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.12em;
-  padding: 8px 40px;
+  padding: 8px 1.25rem;
   color: rgb(255, 255, 255);
 }
 
 .aboutUs #para2 {
   margin: 50px auto;
   font-size: 1.12em;
-  width: 90%;
+  /* width: 90%; */
   text-align: center;
 }
 
@@ -53,4 +53,5 @@
 .aboutUs .contact div{
   max-width: 500px;
   margin: auto;
+  padding: 0 1.25rem;
 }
