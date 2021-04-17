@@ -1,10 +1,11 @@
 import React from 'react';
 import './WishlistProduct.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import db, { auth } from '../../../firebase';
 import { currencyFormat } from '../../../Utilities/currencyFormat';
 
 function WishlistProduct({ id, title, price, img, category, miniView }) {
+  const history = useHistory();
   const email = auth.currentUser?.email;
 
   const removeFromWishlist = () => {
@@ -12,6 +13,14 @@ function WishlistProduct({ id, title, price, img, category, miniView }) {
       .delete()
       .then(() => console.log("Removed from Wishlist"))
       .catch(err => console.log(err));
+  }
+
+  const addToCart = () => {                               // add to cart 
+      db.doc(`customers/${email}`)
+        .collection('cart')
+        .doc(id)
+        .set({ qty: 1 })  
+        .then(() => history.push('/cart'));           // and then redirect to /cart.
   }
 
   return (!miniView ? (
@@ -34,7 +43,7 @@ function WishlistProduct({ id, title, price, img, category, miniView }) {
           </p>
           <hr />
           <h6 className="mb-3">{currencyFormat(price)}</h6>
-          <button type="button" className="btn btn-primary btn-sm mr-1 mb-2">
+          <button type="button" className="btn btn-primary btn-sm mr-1 mb-2" onClick={addToCart}>
             <i className="fas fa-shopping-cart pr-2"></i>
             Add to cart
           </button>

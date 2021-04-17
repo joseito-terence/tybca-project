@@ -33,6 +33,7 @@ function Footer() {
             className='btn btn-link' 
             href="https://charlton-dias.github.io/ecommerce-seller/" 
             target='_blank'
+            rel='noreferrer'
             style={{ color: 'white' }}
           >
             Register your business.
