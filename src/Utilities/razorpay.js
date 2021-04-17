@@ -5,11 +5,11 @@ export function makePayment(amount, phoneNumber, orderDetails) {
     const { displayName, email } = auth.currentUser;
     const options = {
         "key": KEY_ID, // Enter the Key ID generated from the Dashboard
-        "amount": amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "amount": parseInt(amount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Online Store",
         "description": "Payment for purchase.",
-        "image": "https://firebasestorage.googleapis.com/v0/b/tybca-project.appspot.com/o/assets%2Flogo192.png?alt=media&token=c9f93be6-4e71-44c4-84f7-c0169cdfda02",
+        "image": "https://firebasestorage.googleapis.com/v0/b/tybca-project.appspot.com/o/assets%2Flogo001.png?alt=media&token=76107bca-7ed7-476f-bf2f-30a440a0928d",
         //   "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){  //on payment success
             // alert(response.razorpay_payment_id);

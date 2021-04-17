@@ -29,7 +29,14 @@ function Footer() {
         </div>
         <div className="footer__contact-form">
           <h5>Sell your products</h5>
-          <a href="#link-to-seller-side">Register your business.</a>
+          <a 
+            className='btn btn-link' 
+            href="https://charlton-dias.github.io/ecommerce-seller/" 
+            target='_blank'
+            style={{ color: 'white' }}
+          >
+            Register your business.
+          </a>
         </div>
         <div className="footer__details">
           <Logo />

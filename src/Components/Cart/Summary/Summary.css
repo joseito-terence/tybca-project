@@ -3,6 +3,7 @@
   border: 1px solid black;
   border-radius: 4px;
   padding: 8px;
+  height: 44px;
 }
 
 .summary__promoCode > input{

@@ -71,7 +71,7 @@ function Cart() {
             }
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
-            <Summary totalAmount={totalAmount} />
+            <Summary totalAmount={totalAmount} setTotalAmount={setTotalAmount} />
           </div>
         </div>
       </div>
