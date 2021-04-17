@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/tybca-project/static/css/main.c448f1f0.chunk.css",
-    "main.js": "/tybca-project/static/js/main.dbee4c53.chunk.js",
-    "main.js.map": "/tybca-project/static/js/main.dbee4c53.chunk.js.map",
+    "main.css": "/tybca-project/static/css/main.ea30cec8.chunk.css",
+    "main.js": "/tybca-project/static/js/main.4da824f8.chunk.js",
+    "main.js.map": "/tybca-project/static/js/main.4da824f8.chunk.js.map",
     "runtime-main.js": "/tybca-project/static/js/runtime-main.f0c6e9b9.js",
     "runtime-main.js.map": "/tybca-project/static/js/runtime-main.f0c6e9b9.js.map",
-    "static/js/2.fa8b96cc.chunk.js": "/tybca-project/static/js/2.fa8b96cc.chunk.js",
-    "static/js/2.fa8b96cc.chunk.js.map": "/tybca-project/static/js/2.fa8b96cc.chunk.js.map",
+    "static/js/2.e8166ab1.chunk.js": "/tybca-project/static/js/2.e8166ab1.chunk.js",
+    "static/js/2.e8166ab1.chunk.js.map": "/tybca-project/static/js/2.e8166ab1.chunk.js.map",
     "index.html": "/tybca-project/index.html",
-    "static/css/main.c448f1f0.chunk.css.map": "/tybca-project/static/css/main.c448f1f0.chunk.css.map",
-    "static/js/2.fa8b96cc.chunk.js.LICENSE.txt": "/tybca-project/static/js/2.fa8b96cc.chunk.js.LICENSE.txt",
+    "static/css/main.ea30cec8.chunk.css.map": "/tybca-project/static/css/main.ea30cec8.chunk.css.map",
+    "static/js/2.e8166ab1.chunk.js.LICENSE.txt": "/tybca-project/static/js/2.e8166ab1.chunk.js.LICENSE.txt",
     "static/media/filter-results-button.bb47bf0a.svg": "/tybca-project/static/media/filter-results-button.bb47bf0a.svg",
-    "static/media/logo001SVG.d9032d32.svg": "/tybca-project/static/media/logo001SVG.d9032d32.svg",
+    "static/media/logo001SVG.ae980f85.svg": "/tybca-project/static/media/logo001SVG.ae980f85.svg",
     "static/media/undraw_empty_cart.7a5572a9.svg": "/tybca-project/static/media/undraw_empty_cart.7a5572a9.svg",
     "static/media/undraw_empty_street.85e85191.svg": "/tybca-project/static/media/undraw_empty_street.85e85191.svg",
     "static/media/undraw_void.c5ed8831.svg": "/tybca-project/static/media/undraw_void.c5ed8831.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.f0c6e9b9.js",
-    "static/js/2.fa8b96cc.chunk.js",
-    "static/css/main.c448f1f0.chunk.css",
-    "static/js/main.dbee4c53.chunk.js"
+    "static/js/2.e8166ab1.chunk.js",
+    "static/css/main.ea30cec8.chunk.css",
+    "static/js/main.4da824f8.chunk.js"
   ]
 }
