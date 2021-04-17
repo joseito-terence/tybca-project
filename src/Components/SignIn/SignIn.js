@@ -43,7 +43,7 @@ function SignIn() {
   const signInWithGoogle = (event) => {
     event.preventDefault();
 
-    auth.signInWithPopup(provider) // provider is google
+    auth.signInWithRedirect(provider) // provider is google
         .then(result => {
           const { uid, email } = result.user;
           db.doc(`customers/${email}`)                // check if user exists in database.
