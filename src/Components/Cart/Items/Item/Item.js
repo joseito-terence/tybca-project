@@ -16,9 +16,18 @@ function Item({ id, name, price, image, quantity }) {
   }
 
   const handleQtyChange = ({ target }) => {
-    setQty(target.value);                           // update local state with new qty.
+    setQty(parseInt(target.value));                           // update local state with new qty.
     db.doc(`customers/${email}/cart/${id}`)         // update db with new qty.
       .update({ qty: parseInt(target.value) });
+  }
+
+  const incrementQty = () => {
+    handleQtyChange({ target: { value: qty + 1 }});
+  }
+
+  const decrementQty = () => {
+    if (qty - 1 !== 0)
+      handleQtyChange({ target: { value: qty - 1 }});
   }
 
   return (
@@ -36,16 +45,15 @@ function Item({ id, name, price, image, quantity }) {
         </div>
 
         <div className="item__options">
-          <select className="item__optionsQty btn btn-secondary" name="qty" value={qty} onChange={handleQtyChange}>
-            <option value="1">Qty 1</option>
-            <option value="2">Qty 2</option>
-            <option value="3">Qty 3</option>
-            <option value="4">Qty 4</option>
-            <option value="5">Qty 5</option>
-          </select>
+          <div className="item__optionsQty">
+            <button className="btn btn-secondary fas fa-minus" onClick={decrementQty}></button>
+            <input type="text" name="qty" value={qty} onChange={handleQtyChange} />
+            <button className="btn btn-secondary fas fa-plus" onClick={incrementQty}></button>
+          </div>  
           |
           <button className="item__optionsRemove btn btn-secondary" onClick={removeFromCart}>
-            Remove
+            <i className="fas fa-trash">{' '}</i>
+            <span>Remove</span>
           </button>
         </div>
       </div>     
